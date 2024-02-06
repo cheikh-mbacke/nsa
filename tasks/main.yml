@@ -1,0 +1,26 @@
+---
+# tasks file for base_setup
+# base_setup/tasks/main.yml
+
+- name: Installer emacs-nox
+  apt:
+    name: emacs-nox
+    state: present
+
+- name: Personnaliser l'invite de commande
+  lineinfile:
+    path: /etc/profile
+    line: 'PS1="\\u@\\h:\\W\\$ "'
+    state: present
+
+- name: Créer un nouvel utilisateur
+  user:
+    name: fatima
+    state: present
+    createhome: yes
+
+- name: Ajouter la clé SSH publique pour le nouvel utilisateur
+  authorized_key:
+    user: fatima
+    state: present
+    key: "{{ lookup('file', '/home/admin/.ssh/id_rsa.pub') }}"

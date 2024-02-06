@@ -1,0 +1,6 @@
+---
+# defaults file for base_setup
+# base_setup/defaults/main.yml
+
+nom_utilisateur: fatima
+chemin_clé_ssh_publique: /home/admin/.ssh/id_rsa.pub
